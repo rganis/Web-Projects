@@ -19,13 +19,10 @@ while True: # its super annoying to have to refresh the div element every time, 
     time.sleep(2)
     try: # check if div element for song still exists and refreshes it if it does, otherwise it will go to ad logic
         div_element = driver.find_element(By.XPATH, '//*[@id="main"]/div/div[2]/div[3]/footer/div/div[1]/div/div[2]/div[1]/div/div/div/div/span/a').get_attribute('href') 
-        print(div_element)
     except: # if the div element is not found, it means an ad is playing
         volume_mute.click() # mutes the volume if href is an ad
         while True:
-            print("ADVERTISEMENT FOUND")
             try: # checks to see if the new div element is an ad, if so, refreshes the div element and continues. if not, breaks and returns to main loop
                 div_element = driver.find_element(By.XPATH, '//*[@id="main"]/div/div[2]/div[3]/footer/div/div[1]/div/div[2]/div[1]/div/div/div/div/a').get_attribute('href')
-                print(div_element)
                 time.sleep(2)
             except: break # breaks if the ad is over and returns to main loop
